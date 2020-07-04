@@ -3,41 +3,43 @@ const Schema = mongoose.Schema;
 
 // Create Shema
 const StorySchema = new Schema({
-  title:{
-    type:String,
+  title: {
+    type: String,
     required: true
   },
-  body:{
+  body: {
     type: String,
     required: true
   },
   status: {
     type: String,
-    default:'public'
+    default: 'public'
   },
   allowComments: {
     type: Boolean,
-    default:true
+    default: true
   },
-  comments: [{
-    commentBody: {
-      type: String,
-      required: true
-    },
-    commentDate:{
-      type: Date,
-      default: Date.now
-    },
-    commentUser:{
-      type: Schema.Types.ObjectId,
-      ref:'users'
+  comments: [
+    {
+      commentBody: {
+        type: String,
+        required: true
+      },
+      commentDate: {
+        type: Date,
+        default: Date.now
+      },
+      commentUser: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+      }
     }
-  }],
-  user:{
+  ],
+  user: {
     type: Schema.Types.ObjectId,
-    ref:'users'
+    ref: 'users'
   },
-  date:{
+  date: {
     type: Date,
     default: Date.now
   }
